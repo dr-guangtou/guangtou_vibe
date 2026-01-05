@@ -15,12 +15,29 @@
 
 ### IDE-Based Tools
 
-- `Cursor`
-- Google `Antigravity`
-- `TRAE`
-- `Qoder`
+- [`Cursor` - The AI Code Editor](https://github.com/cursor/cursor)
+  - [`Cursor`'s official website](https://cursor.com/home?from=agents)
+  - [`Cursor` command line interface](https://cursor.com/cli)
+- [Google `Antigravity`](https://antigravity.google/)
+- [`TRAE` - Chinese version](https://www.trae.cn/)
+  - [`TRAE` - International version](https://www.trae.ai)
+- [`Qoder` - An Agentic Coding Platform](https://qoder.com/)
+  - [`Qoder` command line interface](https://qoder.com/cli)
 
 ### Utilities
+
+#### For Claude Code 
+
+- [`gastown` - multi-agent workspace manager](https://github.com/steveyegge/gastown)
+
+#### For OpenCode 
+
+- [`oh-my-opencode` - OpenCode plugin with async subagents](https://github.com/code-yeongyu/oh-my-opencode)
+
+#### For TRAE 
+
+- [`trae-agent` - an LLM-based agent for general purpose software engineering tasks](https://github.com/bytedance/trae-agent)
+
 
 ## Glossary
 
@@ -33,5 +50,9 @@
 
 ## Useful Resources 
 
+### Curated Lists
+
 - [Awesome Claude Code Subagents](https://github.com/VoltAgent/awesome-claude-code-subagents?tab=readme-ov-file)
   - A collection of Claude Code subagents - specialized AI agents designed for specific development tasks.
+
+### Tutorials
