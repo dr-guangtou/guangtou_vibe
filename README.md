@@ -31,6 +31,9 @@
 #### For Claude Code 
 
 - [`gastown` - multi-agent workspace manager](https://github.com/steveyegge/gastown)
+- [`planning-with-files` - Claude Code skill implementing Manus-style persistent markdown planning](https://github.com/OthmanAdi/planning-with-files)
+
+- [`autocoder` - A long-running autonomous coding agent powered by the Claude Agent SDK](https://github.com/leonvanzyl/autocoder?tab=readme-ov-file)
 
 #### For OpenCode 
 
@@ -40,15 +43,15 @@
 
 - [`trae-agent` - an LLM-based agent for general purpose software engineering tasks](https://github.com/bytedance/trae-agent)
 
-
 ## Glossary
 
-- [Hook - Claude Code]()
+- [Hook - Claude Code](https://github.com/dr-guangtou/guangtou_vibe/blob/main/glossary/hook.md)
+- [Context Window](https://github.com/dr-guangtou/guangtou_vibe/blob/main/glossary/context_window.md)
+- [Context Management](https://github.com/dr-guangtou/guangtou_vibe/blob/main/glossary/context_management.md)
 - [Subagent - Claude Code]()
 - [Skill - Claude Code]()
 - [Plan Mode - Claude Code]()
 - [MCP]
-
 
 ## Useful Resources 
 
@@ -58,6 +61,15 @@
   - A collection of Claude Code subagents - specialized AI agents designed for specific development tasks.
 
 ### Tutorials
+
+#### Claude Code 
+
+- [Claude Code Project Configuration Showcase](https://github.com/ChrisWiles/claude-code-showcase)
+  - Comprehensive Claude Code project configuration example with hooks, skills, agents, commands, and GitHub Actions workflows.
+
+#### Misc 
+
+- [`doom-coding` - A guide for how to use your smartphone to code anywhere at anytime](https://github.com/rberg27/doom-coding)
 
 ### Others 
 

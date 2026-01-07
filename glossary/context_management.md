@@ -118,7 +118,6 @@ IDE tools may automatically attach relevant parts of your codebase. This reduces
 
 ## 5) References (Markdown-ready)
 
-```markdown
 - Anthropic — Effective context engineering for AI agents (compaction; structured note-taking) — https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 - Anthropic — Claude Docs: Context windows (working-memory framing; token behavior) — https://platform.claude.com/docs/en/build-with-claude/context-windows
 - Anthropic — Claude Docs: Long context prompting tips (document placement; structure; grounding) — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/long-context-tips
@@ -129,4 +128,3 @@ IDE tools may automatically attach relevant parts of your codebase. This reduces
 - OpenAI — Prompt engineering best practices (instructions first; clear structure) — https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api
 - Google — Gemini API: Long context (query placement; context caching; limitations) — https://ai.google.dev/gemini-api/docs/long-context
 - Cursor — Context overview / rules / mentions (IDE context attachment patterns) — https://cursor.com/learn/context
-```
