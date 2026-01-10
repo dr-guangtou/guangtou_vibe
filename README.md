@@ -32,6 +32,7 @@
 
 - [`gastown` - multi-agent workspace manager](https://github.com/steveyegge/gastown)
 - [`planning-with-files` - Claude Code skill implementing Manus-style persistent markdown planning](https://github.com/OthmanAdi/planning-with-files)
+- [`obsidian-skills` - Claude Skills for Obsidian](https://github.com/kepano/obsidian-skills/)
 
 - [`autocoder` - A long-running autonomous coding agent powered by the Claude Agent SDK](https://github.com/leonvanzyl/autocoder?tab=readme-ov-file)
 
