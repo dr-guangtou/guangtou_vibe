@@ -1,6 +1,6 @@
 # Guangtou's Vibe Coding Experience 
 
-- I want to use this repo to keep record of the useful resources, configurations, and files for my own "vibe coding", or agentic development experiment. 
+- I want to use this repo to keep a record of the useful resources, configurations, and files for my own "vibe coding", or agentic development experiment. 
 
 ## Agentic Developing Tools 
 
@@ -28,12 +28,17 @@
 
 ### Utilities
 
+#### General Purpose
+
+- [AGENTS.md — a simple, open format for guiding coding agent](https://github.com/agentsmd/agents.md)
+  - [AGENTS.md website](https://agents.md/)
+  - "README.md for agent": AGENTS.md complements this by containing the extra, sometimes detailed context coding agents need: build steps, tests, and conventions that might clutter a README or aren’t relevant to human contributors.
+
 #### For Claude Code 
 
 - [`gastown` - multi-agent workspace manager](https://github.com/steveyegge/gastown)
 - [`planning-with-files` - Claude Code skill implementing Manus-style persistent markdown planning](https://github.com/OthmanAdi/planning-with-files)
 - [`obsidian-skills` - Claude Skills for Obsidian](https://github.com/kepano/obsidian-skills/)
-
 - [`autocoder` - A long-running autonomous coding agent powered by the Claude Agent SDK](https://github.com/leonvanzyl/autocoder?tab=readme-ov-file)
 
 #### For OpenCode 
@@ -42,7 +47,7 @@
 
 #### For TRAE 
 
-- [`trae-agent` - an LLM-based agent for general purpose software engineering tasks](https://github.com/bytedance/trae-agent)
+- [`trae-agent` - an LLM-based agent for general-purpose software engineering tasks](https://github.com/bytedance/trae-agent)
 
 ## Glossary
 
@@ -52,7 +57,7 @@
 - [Subagent - Claude Code]()
 - [Skill - Claude Code]()
 - [Plan Mode - Claude Code]()
-- [MCP]
+- [MCP]()
 
 ## Useful Resources 
 
@@ -65,6 +70,12 @@
 
 #### Claude Code 
 
+- [Claude Cookbook - Practical guides and examples for using Claude effectively](https://platform.claude.com/cookbook)
+  - Not all of these cookbooks are from the official source.
+ 
+- [Claude Code: Best practices for agentic coding by Anthropic](https://www.anthropic.com/engineering/claude-code-best-practices)
+  - This is from Apr 2025; some of these suggestions might be outdated.
+
 - [Claude Code Project Configuration Showcase](https://github.com/ChrisWiles/claude-code-showcase)
   - Comprehensive Claude Code project configuration example with hooks, skills, agents, commands, and GitHub Actions workflows.
 
@@ -75,3 +86,4 @@
 ### Others 
 
 - [System Prompts and Models of AI Tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)
+- [Demystifying evals for AI agents by Anthropic](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
