@@ -30,9 +30,12 @@
 
 #### General Purpose
 
-- [AGENTS.md — a simple, open format for guiding coding agent](https://github.com/agentsmd/agents.md)
-  - [AGENTS.md website](https://agents.md/)
+- [`AGENTS.md` — a simple, open format for guiding coding agent](https://github.com/agentsmd/agents.md)
+  - [`AGENTS.md` website](https://agents.md/)
   - "README.md for agent": AGENTS.md complements this by containing the extra, sometimes detailed context coding agents need: build steps, tests, and conventions that might clutter a README or aren’t relevant to human contributors.
+
+- [`Superpowers` - Claude Code superpowers: core skills library](https://github.com/obra/superpowers)
+  - `Superpowers` is a complete software development workflow for your coding agents, built on top of a set of composable "skills" and some initial instructions that make sure your agent uses them.
 
 #### For Claude Code 
 
@@ -40,6 +43,9 @@
 - [`planning-with-files` - Claude Code skill implementing Manus-style persistent markdown planning](https://github.com/OthmanAdi/planning-with-files)
 - [`obsidian-skills` - Claude Skills for Obsidian](https://github.com/kepano/obsidian-skills/)
 - [`autocoder` - A long-running autonomous coding agent powered by the Claude Agent SDK](https://github.com/leonvanzyl/autocoder?tab=readme-ov-file)
+- [`Continuous-Claude-v3` - Context management for Claude Code](https://github.com/parcadei/Continuous-Claude-v3)
+  - A persistent, learning, multi-agent development environment built on Claude Code.
+
 
 #### For OpenCode 
 
