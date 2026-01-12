@@ -37,6 +37,10 @@
 - [`Superpowers` - Claude Code superpowers: core skills library](https://github.com/obra/superpowers)
   - `Superpowers` is a complete software development workflow for your coding agents, built on top of a set of composable "skills" and some initial instructions that make sure your agent uses them.
 
+- [`agentskills` - Specification and documentation for Agent Skills, a simple, open format for giving agents new capabilities and expertise](https://github.com/agentskills/agentskills)
+  - The [website for Agent Skills](https://agentskills.io/home)
+  - [The public repository for Agent Skills maintained by Antropics](https://github.com/anthropics/skills)
+
 #### For Claude Code 
 
 - [`gastown` - multi-agent workspace manager](https://github.com/steveyegge/gastown)
