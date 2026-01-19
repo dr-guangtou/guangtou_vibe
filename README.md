@@ -41,6 +41,14 @@
   - The [website for Agent Skills](https://agentskills.io/home)
   - [The public repository for Agent Skills maintained by Antropics](https://github.com/anthropics/skills)
 
+#### MCP
+
+- [`Context7` - Up-to-date Docs for LLMs and AI code editors](https://context7.com/)
+  - [The `GitHub` repository for `Context7`](https://github.com/upstash/context7)
+ 
+- [`PlayWright` MCP Server](https://github.com/microsoft/playwright-mcp)
+  - A Model Context Protocol (MCP) server that provides browser automation capabilities using [Playwright](https://playwright.dev/).
+
 #### For Claude Code 
 
 - [`gastown` - multi-agent workspace manager](https://github.com/steveyegge/gastown)
@@ -50,7 +58,6 @@
 - [`Continuous-Claude-v3` - Context management for Claude Code](https://github.com/parcadei/Continuous-Claude-v3)
   - A persistent, learning, multi-agent development environment built on Claude Code.
 
-
 #### For OpenCode 
 
 - [`oh-my-opencode` - OpenCode plugin with async subagents](https://github.com/code-yeongyu/oh-my-opencode)
@@ -58,6 +65,8 @@
 #### For TRAE 
 
 - [`trae-agent` - an LLM-based agent for general-purpose software engineering tasks](https://github.com/bytedance/trae-agent)
+
+--- 
 
 ## Glossary
 
