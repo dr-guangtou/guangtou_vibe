@@ -34,12 +34,18 @@
   - [`AGENTS.md` website](https://agents.md/)
   - "README.md for agent": AGENTS.md complements this by containing the extra, sometimes detailed context coding agents need: build steps, tests, and conventions that might clutter a README or aren’t relevant to human contributors.
 
+- [`SKILLS.sh` - The open agent skills ecosystem](https://skills.sh/)
+  - Skills are reusable capabilities for AI agents. Install them with a single command to enhance your agents with access to procedural knowledge.
+
 - [`Superpowers` - Claude Code superpowers: core skills library](https://github.com/obra/superpowers)
   - `Superpowers` is a complete software development workflow for your coding agents, built on top of a set of composable "skills" and some initial instructions that make sure your agent uses them.
 
 - [`agentskills` - Specification and documentation for Agent Skills, a simple, open format for giving agents new capabilities and expertise](https://github.com/agentskills/agentskills)
   - The [website for Agent Skills](https://agentskills.io/home)
   - [The public repository for Agent Skills maintained by Antropics](https://github.com/anthropics/skills)
+
+- [`claude_code_bridge` - Real-time multi-AI collaboration: Claude, Codex & Gemini with persistent context, minimal token overhead](https://github.com/bfly123/claude_code_bridge)
+  - New Multi-Model Collaboration Tool via Split-Pane Terminal Claude & Codex & Gemini & OpenCode Ultra-low token real-time communication, unleashing full CLI power
 
 #### MCP
 
@@ -49,6 +55,9 @@
 - [`PlayWright` MCP Server](https://github.com/microsoft/playwright-mcp)
   - A Model Context Protocol (MCP) server that provides browser automation capabilities using [Playwright](https://playwright.dev/).
 
+- [`exa-mcp-server` - Exa MCP for web search and web crawling](https://github.com/exa-labs/exa-mcp-server)
+  - [`exa` MCP documents](https://exa.ai/docs/reference/exa-mcp)
+
 #### For Claude Code 
 
 - [`gastown` - multi-agent workspace manager](https://github.com/steveyegge/gastown)
@@ -57,7 +66,10 @@
 - [`autocoder` - A long-running autonomous coding agent powered by the Claude Agent SDK](https://github.com/leonvanzyl/autocoder?tab=readme-ov-file)
 - [`Continuous-Claude-v3` - Context management for Claude Code](https://github.com/parcadei/Continuous-Claude-v3)
   - A persistent, learning, multi-agent development environment built on Claude Code.
+- [`claude-scientific-skills` - A set of ready-to-use scientific skills for Claude](https://github.com/K-Dense-AI/claude-scientific-skills)
 
+- [`cc-wf-studio` - CC (Claude code / GitHub Copilot) Workflow Studio](https://github.com/breaking-brake/cc-wf-studio)
+  - Design complex AI agent workflows intuitively with drag-and-drop. Build Sub-Agent orchestrations and conditional branching without writing code, then export directly to `.claude` format for immediate execution.
 #### For OpenCode 
 
 - [`oh-my-opencode` - OpenCode plugin with async subagents](https://github.com/code-yeongyu/oh-my-opencode)
@@ -84,8 +96,19 @@
 
 - [Awesome Claude Code Subagents](https://github.com/VoltAgent/awesome-claude-code-subagents?tab=readme-ov-file)
   - A collection of Claude Code subagents - specialized AI agents designed for specific development tasks.
+- [`everything-claude-code` - Complete Claude Code configuration collection](https://github.com/affaan-m/everything-claude-code)
+  - This repo contains production-ready agents, skills, hooks, commands, rules, and MCP configurations 
 
 ### Tutorials
+
+#### The "Ralph Wiggum" Technique
+
+- [`ralph-playbook` - A comprehensive guide to running autonomous AI coding loops using Geoff Huntley's Ralph methodology](https://github.com/ClaytonFarr/ralph-playbook)
+  - [The formatted view of the playbook](https://claytonfarr.github.io/ralph-playbook/)
+
+- [`how-to-ralph-wiggum` - The Ralph Wiggum Technique—the AI development methodology that reduces software costs to less than a fast food worker's wage](https://github.com/ghuntley/how-to-ralph-wiggum)
+
+- [`awesome-ralph` - A curated list of resources about Ralph, the AI coding technique that runs AI coding agents in automated loops until specifications are fulfilled](https://github.com/snwfdhmp/awesome-ralph)
 
 #### Claude Code 
 
