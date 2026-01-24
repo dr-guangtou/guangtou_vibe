@@ -70,6 +70,9 @@
 
 - [`cc-wf-studio` - CC (Claude code / GitHub Copilot) Workflow Studio](https://github.com/breaking-brake/cc-wf-studio)
   - Design complex AI agent workflows intuitively with drag-and-drop. Build Sub-Agent orchestrations and conditional branching without writing code, then export directly to `.claude` format for immediate execution.
+ 
+- [`Claude` for Excel](https://claude.com/claude-in-excel)
+
 #### For OpenCode 
 
 - [`oh-my-opencode` - OpenCode plugin with async subagents](https://github.com/code-yeongyu/oh-my-opencode)
@@ -100,6 +103,9 @@
   - This repo contains production-ready agents, skills, hooks, commands, rules, and MCP configurations 
 
 ### Tutorials
+
+- [Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/)
+
 
 #### The "Ralph Wiggum" Technique
 
