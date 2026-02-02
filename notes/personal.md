@@ -10,6 +10,25 @@
   - 接口设计：可以被自然语言描述；可以被符号逻辑固化；并且能够交付确定性的结果。
     - 2025年底最好的逻辑符号描述，就是代码，即使对于非编程Agent 来说也是。
 
+- [Ross Mike Workflows - Mini Lessons](https://ccforeveryone.com/mini-lessons/ross-mike-workflows)
+  - Your input quality dictates your output quality.
+  - Good plan: Broken into specific features, each with acceptance criteria and tests. UI decisions made. Technical trade-offs resolved.
+  - The **Ask User Question Technique**: "Read this plan file. Interview me in detail using the ask user question tool about literally anything - technical implementation, UI/UX concerns, and trade-offs."
+  - Don't obsess over MCP and Tools: The fix is almost never more tools. It’s a better plan.
+  - The 50% Context Rule: Never let context usage exceed 50%. When you hit 40-50%, start a fresh session.
+  - Earn the Right to Automate (Ralph Loops): Don’t use them yet.
+    - Deploy something manually first. Then you’ve earned the right to automate.
+   
+- [Advanced Claude Code Workflows - Mini Lessons](https://ccforeveryone.com/mini-lessons/advanced-claude-workflows)
+  - Mermaid diagrams are a text format that compresses your app’s logic into something AI can consume instantly.
+    - `claude --append-system-prompt "$(cat .ai/diagrams/*.md)"`
+    - Aliases: `alias cdi="claude --append-system-prompt \"\$(cat .ai/diagrams/*.md)\""`
+  - Stop Hooks: A stop hook runs every time Claude finishes a response - right before it waits for your input.
+    - Config it in `.claude/settings.local.json`
+  - The "Infinite Junior Engineer": The AI isn’t replacing your judgment - it’s doing the boring prep work so you can focus on decisions that matter.
+  - Handling Drift: When Claude starts to get confused, don’t fight it. Export the conversation, paste it into a DIFFERENT model (ChatGPT or Gemini), and ask, “Where did this go wrong?” The second model isn’t stuck in the same confusion - it can see the drift objectively. 
+  
+
 ## Tools 
 
 - [The complete Claude code tutorial](https://x.com/eyad_khrais/status/2010076957938188661?s=20)
