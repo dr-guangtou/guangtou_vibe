@@ -97,6 +97,8 @@
 
 ### Curated Lists
 
+- [`awesome-claude-code` - A curated list of awesome skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude Code by Anthropic](https://github.com/hesreallyhim/awesome-claude-code)
+
 - [Awesome Claude Code Subagents](https://github.com/VoltAgent/awesome-claude-code-subagents?tab=readme-ov-file)
   - A collection of Claude Code subagents - specialized AI agents designed for specific development tasks.
 - [`everything-claude-code` - Complete Claude Code configuration collection](https://github.com/affaan-m/everything-claude-code)
