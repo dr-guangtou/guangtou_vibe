@@ -106,8 +106,9 @@
 
 ### Tutorials
 
-- [Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/)
+- [Ross Mike workflows - Mini Lesons](https://ccforeveryone.com/mini-lessons/ross-mike-workflows)
 
+- [Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/)
 
 #### The "Ralph Wiggum" Technique
 
