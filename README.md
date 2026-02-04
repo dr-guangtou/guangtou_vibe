@@ -73,6 +73,9 @@
  
 - [`Claude` for Excel](https://claude.com/claude-in-excel)
 
+- [`claude-mem` - A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions](https://github.com/thedotmack/claude-mem)
+  - [Document for `claude-mem`](https://docs.claude-mem.ai/introduction)
+
 #### For OpenCode 
 
 - [`oh-my-opencode` - OpenCode plugin with async subagents](https://github.com/code-yeongyu/oh-my-opencode)
