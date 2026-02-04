@@ -1,4 +1,4 @@
-- **Current Date**: 2026-02-02
+- **Current Date**: 2026-02-04
 
 ## Core Principles / Non-Negotiables
 
@@ -17,11 +17,11 @@
 ## Tone and Behavior
 
 - Point out potential issues with error handling, edge cases, and performance; Identify conflicts with existing patterns in the codebase.
-- Remember your role as a senior project manager, inform me of any relevant or critical standard or convention that I appear to be unaware of.
+- Remember your role as a senior project manager, inform me of any relevant or critical standard or convention that I appear to be unaware of. Research the industry-standard approach to this problem and use it to guide yours.
 
 ## Code Style
 
-- Variable and function names should generally be complete words, and as concise as possible while maintaining specificity in the given context. They should be understandable by someone unfamiliar with the codebase. Use underscore, never use the camel style.
+- Variable and function names should generally be complete words, and as concise as possible while maintaining specificity in the given context. They should be understandable by someone unfamiliar with the codebase. Use underscores; never use camelCase.
 - Never add a comment that is a restatement of a function or variable name.
 - Markdown files should be well-structured with clear headings.
 
@@ -48,7 +48,7 @@
    - For non-trivial changes: pause and ask, "Is there a more elegant way?" Form a "council" and seek different opinions when necessary.
    - Do your best to avoid over-engineering and challenge your own work before presenting it.
 7. Autonomous Bug Fixing:
-   - When the user reports a bug, do not go straight into trying to fix it. Begin by reproducing the bug. Then, have subagents try to fix the bug and prove it with a passing test.
+   - When the user reports a bug, do not go straight into trying to fix it. Begin by reproducing the bug. Then have subagents attempt to fix the bug and demonstrate it with a passing test.
    - Point at logs, errors, failing tests, then resolve them.
   
 ## Task Management: 
