@@ -133,9 +133,14 @@
 - [Claude Code Project Configuration Showcase](https://github.com/ChrisWiles/claude-code-showcase)
   - Comprehensive Claude Code project configuration example with hooks, skills, agents, commands, and GitHub Actions workflows.
 
-#### Misc 
+#### Misc
+
+- [`openusage` - A plugin-based menu bar app for tracking AI coding tool subscriptions like Cursor, Claude, Codex, and more, all in one place with a heavy focus on user experience, speed, and stability](https://github.com/robinebers/openusage)
 
 - [`doom-coding` - A guide for how to use your smartphone to code anywhere at anytime](https://github.com/rberg27/doom-coding)
+
+- [`summarize` - Point at any URL/YouTube/Podcast or file. Get the gist. CLI and Chrome Extension](https://github.com/steipete/summarize)
+  - The [website for `summarize`](https://summarize.sh/) and the [Chrome Browser extention](https://chromewebstore.google.com/detail/summarize/cejgnmmhbbpdmjnfppjdfkocebngehfg)
 
 ### Others 
 
