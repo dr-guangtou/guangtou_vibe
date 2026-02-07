@@ -1,0 +1,4 @@
+interface:
+  display_name: "arXiv Public API"
+  short_description: "Use arXiv's public API safely: build queries, page results, parse Atom, and respect strict rate limits."
+  default_prompt: "Help me use the arXiv public API to search papers and parse results while respecting rate limits and Terms of Use."
