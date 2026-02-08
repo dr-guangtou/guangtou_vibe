@@ -1,0 +1,4 @@
+interface:
+  display_name: "Legacy Survey API"
+  short_description: "Use DR10 image and catalog endpoints with local references, maskbits, and issue checks."
+  default_prompt: "Help me query Legacy Survey DR10 images or catalogs and interpret maskbits and data-quality caveats."
