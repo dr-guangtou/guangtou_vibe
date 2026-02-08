@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADS API"
+  short_description: "ADS search syntax and API query patterns for literature."
+  default_prompt: "Use this skill to compose ADS search queries and call ADS API endpoints reliably."
