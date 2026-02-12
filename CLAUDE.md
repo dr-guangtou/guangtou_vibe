@@ -29,8 +29,13 @@
 
 1. Plan Mode Default:
    - Enter plan mode for ANY non-trivial tasks (3+ steps or architectural decisions) for building AND testing (verification) steps.
+   - ALWAYS ask clarifying questions BEFORE committing to a plan. Surface edge cases, constraints, and architectural decisions the user may not have considered.
+   - Use subagents to research relevant parts of the codebase in parallel rather than doing it all in the main context.
+   - Keep plans concise and actionable, steps, not essays. List unresolved questions at the end.
    - Be specific about the requirements, specifications, and interfaces upfront to reduce ambiguity.
    - Replan whenever necessary, especially when facing significant issues or bottlenecks.
+   - Always include a link to the local .md file where the plan is being developed, so the user can easily jump in and edit it if needed.
+   - Think holistically when solving problems or shaping features, always asking yourself what other areas or files could be affected and why.
 2. Before Writing Code:
    - Check for existing utility functions before creating new ones.
    - Examine and review some (3-5) similar files in the codebase first to get familiar with the styles, such as the error handling approach and testing patterns.
@@ -64,7 +69,18 @@
 
 - Implement pre-commit for this Python repo via `pre-commit` with pinned hook versions.
   - Use `Ruff` (if installed) as the single source of truth for lint + format.
-  - Keep hooks fast (no test suite); ensure failures are actionable and auto-fixes are enabled where safe. Update/add docs with the exact install + usage commands.
+  - Keep hooks fast (no test suite); ensure failures are actionable and auto-fixes are enabled where safe. Update/add documentation with the exact installation and usage commands.
 
 - When developing a new Python repo (without previous code), use uv exclusively for Python package management in this project. All Python dependencies **must be installed, synchronized, and locked** using uv. Never use pip, pip-tools, poetry, or conda directly for dependency management
+
+## File Edit Conflicts
+
+When you get a "File has been modified since read" error (common when multiple agents edit the same file concurrently), retry with exponential backoff:
+
+1.⁠ ⁠*Immediately* re-read the file and retry the edit
+2.⁠ ⁠*After 10 seconds* – ⁠ sleep 10 ⁠, re-read, retry
+3.⁠ ⁠*After 30 seconds* – ⁠ sleep 30 ⁠, re-read, retry
+4.⁠ ⁠*After 60 seconds* – ⁠ sleep 60 ⁠, re-read, retry
+
+Only give up after all 4 attempts fail. Each retry MUST re-read the file to obtain the latest content, then apply the edit to the current state of the file.
 
