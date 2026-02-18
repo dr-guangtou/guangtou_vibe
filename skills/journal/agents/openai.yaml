@@ -1,0 +1,4 @@
+interface:
+  display_name: "Journal"
+  short_description: "Build concise Obsidian dev journals"
+  default_prompt: "Use $journal to summarize this repository session into one concise Obsidian note with properties and sections for Progress, Lessons Learned, and Key Issues."
