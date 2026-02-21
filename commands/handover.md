@@ -27,6 +27,7 @@ Also run these commands to capture concrete state:
 - `git status` and `git log --oneline -5` for repo state
 - `git diff --stat` if there are uncommitted changes
 - Check for any TODO items in docs/todo.md
+- Capture session ID: `ls -t ~/.claude/session-env/ | head -1`
 
 ## Step 2: Write journal entry
 
@@ -59,6 +60,9 @@ Format:
 
 ## Files Modified This Session
 - [List of files touched]
+
+---
+*Session: [SESSION_ID] — resume with `claude --resume [SESSION_ID]`*
 ```
 
 ## Step 3: Update MEMORY.md
@@ -67,7 +71,31 @@ Read the current auto-memory file at the project's memory directory. Update the 
 
 Do NOT duplicate the journal entry. MEMORY.md should contain only the key facts needed to orient the next session (current branch, what's done, what's next, any critical warnings).
 
-## Step 4: Prepare the handover prompt
+## Step 4: One-sentence snapshot
+
+Before writing the handover prompt, generate a 1-2 sentence summary of this session's progress following the same rules as the `/one-sentence` command:
+
+- Be specific: name features, files, or components actually touched.
+- Past tense; one sentence preferred, two only when a key accomplishment and a key remaining item both need capturing.
+- Omit meta-work (writing handover notes, updating MEMORY.md) unless that was the primary work.
+
+Format it as:
+
+```
+[YYYY-MM-DD] <repo-name>: <summary>
+```
+
+Then append it to the wensai Obsidian daily note automatically:
+
+```bash
+obsidian vault=wensai daily:append content="## Dev Snapshot\n\n> [YYYY-MM-DD] <repo>: <summary>"
+```
+
+Confirm: `One-sentence snapshot recorded to today's Obsidian journal.`
+
+---
+
+## Step 5: Prepare the handover prompt
 
 Compose a ready-to-paste prompt that the user can use to start the next session. This prompt should:
 
@@ -77,6 +105,6 @@ Compose a ready-to-paste prompt that the user can use to start the next session.
 
 Print this prompt clearly at the end, wrapped in a code block so the user can copy it directly.
 
-## Step 5: Confirm
+## Step 6: Confirm
 
 Summarize what you wrote and where. List the files created/updated.
