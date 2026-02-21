@@ -1,4 +1,4 @@
 interface:
   display_name: "Handover"
-  short_description: "Capture session handover notes and restart prompt"
-  default_prompt: "Use $handover to produce a clean handover note and a first prompt for the next session."
+  short_description: "Capture session handover notes and next-session prompt"
+  default_prompt: "Use $handover to produce a detailed handover note, one-sentence snapshot, and a first prompt for the next session."

@@ -1,37 +1,40 @@
-# Session Handover
+# Session Handover - YYYY-MM-DD
 
-## 1. Objective
-- Main goal:
-- Scope for next session:
+## Goal
+- Current objective:
+- Most recent user request:
 
-## 2. Current Status
-- Completed:
-- In progress:
-- Blockers:
+## Completed This Session
+- Specific accomplishments (include file paths and commit IDs when available):
 
-## 3. Key References
-- `path/to/file`: why this matters
-- `path/to/file`: why this matters
+## In Progress (Not Finished)
+- Remaining work:
+- Immediate next actions:
 
-## 4. Decisions
+## Problems / Blockers
+- Unresolved issues:
+
+## Key Decisions
 - Decision:
 - Rationale:
 
-## 5. Verification
+## Branch State
+- Branch:
+- Uncommitted changes:
+- Relationship to main:
+
+## Files Modified This Session
+- `path/to/file`
+
+## Verification
 - Ran:
 - Result:
 - Not run yet:
 - Reason:
 
-## 6. Next Steps
-1. Step with command
-2. Step with command
-3. Step with command
+## Snapshot
+- `[YYYY-MM-DD] <repo-name>: <one-sentence summary>`
 
-## 7. Resume Commands
-```bash
-# commands to resume quickly
-```
-
-## 8. Risks / Open Questions
-- Risk or open question
+---
+- Session ID (if available):
+- Resume hint:

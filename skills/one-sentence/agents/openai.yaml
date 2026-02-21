@@ -1,0 +1,4 @@
+interface:
+  display_name: "One Sentence"
+  short_description: "Generate a precise 1-2 sentence development snapshot"
+  default_prompt: "Use $one-sentence [optional range/time/topic] [--record] to create a concise progress summary."
