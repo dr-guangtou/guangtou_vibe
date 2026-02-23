@@ -19,7 +19,8 @@ Create a structured handover that preserves technical context with minimal infor
 2. Write the handover summary file.
    - Path pattern: `docs/journal/YYYY-MM-DD_handover.md`.
    - If the file exists, append numeric suffixes: `_2`, `_3`, and so on.
-   - Use `references/handover-template.md` as the canonical structure.
+       - Use `skills/handover/references/handover-template.md` as the canonical structure.
+   
    - Include concrete file paths, commands, and verification status.
 
 3. Update project memory (if available).

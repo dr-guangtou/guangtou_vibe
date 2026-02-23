@@ -7,7 +7,7 @@ description: "Guidance for safe, compliant use of arXiv public APIs (legacy arXi
 
 ## Safety and Compliance First
 
-- Read and follow `references/terms_of_use.md` before making requests.
+- Read and follow `skills/arxiv-public-api/references/terms_of_use.md` before making requests.
 - Enforce the legacy API rate limits across all machines you control: one request every three seconds and a single connection at a time.
 - Do not parallelize requests or attempt to circumvent rate limits.
 - Use OAI-PMH for bulk metadata harvesting and large result sets.
@@ -22,6 +22,6 @@ description: "Guidance for safe, compliant use of arXiv public APIs (legacy arXi
 
 ## References
 
-- `references/terms_of_use.md`
-- `references/api_basics.md`
-- `references/user_manual.md`
+- `skills/arxiv-public-api/references/terms_of_use.md`
+- `skills/arxiv-public-api/references/api_basics.md`
+- `skills/arxiv-public-api/references/user_manual.md`

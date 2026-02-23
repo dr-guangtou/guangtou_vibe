@@ -32,4 +32,4 @@ description: Create faithful, concise Obsidian markdown journal notes for softwa
 
 ## Output Template
 
-Use `references/note-template.md` as the canonical structure.
+Use `skills/journal/references/note-template.md` as the canonical structure.

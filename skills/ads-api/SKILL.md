@@ -23,8 +23,8 @@ Use these core syntax rules first:
 - Use ranges such as `year:[2018 TO 2024]`.
 - Use grouped clauses with parentheses for precedence control.
 
-Read `/Users/mac/Documents/yuzhe/skills/ads-api/references/search_syntax.md` for canonical syntax patterns and edge-case behavior.
-Read `/Users/mac/Documents/yuzhe/skills/ads-api/references/search_parser.md` when parser behavior or advanced operators become relevant.
+Read `skills/ads-api/references/search_syntax.md` for canonical syntax patterns and edge-case behavior.
+Read `skills/ads-api/references/search_parser.md` when parser behavior or advanced operators become relevant.
 
 ## Use API Endpoints
 
@@ -35,14 +35,14 @@ Read `/Users/mac/Documents/yuzhe/skills/ads-api/references/search_parser.md` whe
 - Use deterministic sorting when reproducibility matters.
 
 Use endpoint-specific guidance:
-- `/Users/mac/Documents/yuzhe/skills/ads-api/references/api_basics.md`
-- `/Users/mac/Documents/yuzhe/skills/ads-api/references/api_endpoints.md`
-- `/Users/mac/Documents/yuzhe/skills/ads-api/references/api_examples.md`
+- `skills/ads-api/references/api_basics.md`
+- `skills/ads-api/references/api_endpoints.md`
+- `skills/ads-api/references/api_examples.md`
 
 ## Field Selection
 
 Before running large queries, confirm field names and semantics in:
-- `/Users/mac/Documents/yuzhe/skills/ads-api/references/solr_fields_operators.md`
+- `skills/ads-api/references/solr_fields_operators.md`
 
 For speed and reliability, request only required fields in `fl` (for example `bibcode,title,author,year,citation_count`).
 
@@ -56,4 +56,4 @@ For speed and reliability, request only required fields in `fl` (for example `bi
 
 ## Reference Index
 
-Use `/Users/mac/Documents/yuzhe/skills/ads-api/references/index.md` to locate the right reference file quickly.
+Use `skills/ads-api/references/index.md` to locate the right reference file quickly.
