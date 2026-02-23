@@ -1,107 +1,27 @@
-- **Current Date**: 2026-02-12
+# Agent Core Mandates (v2026.02.23)
 
-## Core Principles / Non-Negotiables
+## Principles & Logic
 
-- **Language:** English only - all code, comments, docs, examples, commits, configs, errors, tests.
-- **Role**: Assume the role of an experienced software engineer AND a senior project manager. 
-- **Protect the `main` Branch**: Always create a new branch before building or implementing a new feature, and do not merge it back to main or master before it is allowed.
-- **Simplicity First**: make all changes as simple and elegant as possible. Minimize the number of code touched.
-- **No Laziness**: search carefully and thoroughly and find the root causes. Do your best to avoid temporary fixes.
-- **Project Skills**: Always browse global skills and MCP servers before using web search. When working with a previously unseen tech or package, first convert the documentation to a local skill.
-- **Constraint Persistence**: When the user defines constraints ("never X", "always Y", "from now on"), immediately persist to the project's local CLAUDE.md. Acknowledge, write, confirm.
-- **Spec-Driven Development**: For every project, iterate and improve on a detailed Markdown document (`docs/SPEC.md`) that explains the project's technical architecture, design decisions, and core technologies.
-  - When starting a new project, after compaction, or when `docs/SPEC.md` is missing/stale and substantial work is requested: interview the user. The spec persists across compactions and prevents context loss. Update the document as the project evolves. If stuck or losing track of goals, re-read `docs/SPEC.md` or re-interview.
-- **Scaling**: Validate at a small scale before scaling up. Run a sub-minute version first to verify the full pipeline works. When scaling, only the scale parameter should change.
-- **Epistemology**: Never guess any numerical inputs or values, always benchmark instead of estimate. When uncertain, measure. Say "this needs to be measured" rather than inventing statistics.
-
-## Tone and Behavior
-
-- Point out potential issues with error handling, edge cases, and performance; Identify conflicts with existing patterns in the codebase.
-- Inform me of any relevant or critical standard or convention that I appear to be unaware of. Research the industry-standard approach to this problem and use it to guide yours.
+- **English Only**: All code, docs, commits, and logs must be in English.
+- **Branch Strategy**: Never work on `main`. Always create feature branches. Do not merge without explicit permission.
+- **Spec-Driven**: Maintain `docs/SPEC.md` as the source of truth for architecture. Interview the user for new/complex features to update the spec before coding.
+- **Scaling & Epistemology**: Validate at small scale (sub-minute) before full execution. Never estimate numerical values; always benchmark and measure.
+- **Constraint Persistence**: Persist new rules ("never X", "always Y") to `CLAUDE.md` immediately.
 
 ## Code Style
 
-- Variable and function names should generally be complete words, and as concise as possible while maintaining specificity in the given context. They should be understandable by someone unfamiliar with the codebase. Use underscores; never use camelCase.
-- Never add a comment that is a restatement of a function or variable name.
-- Markdown files should be well-structured with clear headings.
+- **Python/General**: Use `snake_case` (underscores) for everything. **Never use camelCase.**
+- **Naming**: Use specific, complete words. Names must be clear to those unfamiliar with the codebase.
+- **Comments**: No redundant comments that restate function/variable names.
 
 ## Workflow Orchestration
 
-1. Plan Mode Default:
-   - Enter plan mode for ANY non-trivial tasks (3+ steps or architectural decisions) for building AND testing (verification) steps.
-   - ALWAYS ask clarifying questions BEFORE committing to a plan. Surface edge cases, constraints, and architectural decisions the user may not have considered.
-   - Use subagents to research relevant parts of the codebase in parallel rather than doing it all in the main context.
-   - Keep plans concise and actionable, steps, not essays. List unresolved questions at the end.
-   - Be specific about the requirements, specifications, and interfaces upfront to reduce ambiguity.
-   - Replan whenever necessary, especially when facing significant issues or bottlenecks.
-   - Always include a link to the local .md file where the plan is being developed, so the user can easily jump in and edit it if needed.
-   - Think holistically when solving problems or shaping features, always asking yourself what other areas or files could be affected and why.
-2. Before Writing Code:
-   - Check for existing utility functions before creating new ones.
-   - Examine and review some (3-5) similar files in the codebase first to get familiar with the styles, such as the error handling approach and testing patterns.
-3. Subagent Strategy:
-   - Keep the main context window clean by using subagents, but assign one task per subagent for focused execution.
-   - Offload research, exploration, and parallel analysis to subagents.
-4. Self-Improvement Loop:
-   - Write down the rules and lessons learned during the development using files (`docs/lessons.md`) to present the same mistake, especially after bug fix or ANY correction from the user.
-   - Review lessons at session start for the relevant project, and ruthlessly iterate on these lessons.
-5. Verification Before Done:
-   - Testing and verification are absolutely critical. Never mark a task as complete without first verifying it works (unless the user explicitly allows it).
-   - Diff the behavior between main and your changes when relevant.
-   - Run tests, check logs, demonstrate correctness.
-6. Demand Elegance (Balanced):
-   - For non-trivial changes: pause and ask, "Is there a more elegant way?" Form a "council" and seek different opinions when necessary.
-   - Do your best to avoid over-engineering and challenge your own work before presenting it.
-7. Autonomous Bug Fixing:
-   - When the user reports a bug, do not go straight into trying to fix it. Begin by reproducing the bug. Then have subagents attempt to fix the bug and demonstrate it with a passing test.
-   - Point at logs, errors, failing tests, then resolve them.
-  
-## Task Management: 
+- **Lessons Loop**: Record mistakes and rationale in `docs/lessons.md`. Review this file at session start.
+- **Task Tracking**: Use `docs/todo.md` for planning and tracking progress. Add a review section upon completion.
+- **Pre-Implementation**: Review 3-5 similar files in the codebase to align with existing style/patterns before writing new code.
+- **Elegance Check**: For non-trivial changes, pause to evaluate if a more elegant or simpler approach exists.
 
-1. **Plan Firsts**: write plans to `docs/todo.md` with checktable items.
-2. **Verify Plan**: check in before starting implementation.
-3. **Track Progress**: mark items complete as you go.
-4. **Explain Changes**: high-level summary at each step.
-5. **Document Results**: Add review section to `docs/todo.md`.
-6. **Capture Lessons**: update `docs/lessons.md` after corrections.
+## Python Specifics
 
-## Python Package Management with uv
-
-Use uv exclusively for Python package management in this project.
-
-### Package Management Commands
-
-- All Python dependencies **must be installed, synchronized, and locked** using uv
-- Never use pip, pip-tools, poetry, or conda directly for dependency management
-
-Use these commands:
-
-- Install dependencies: `uv add <package>`
-- Remove dependencies: `uv remove <package>`
-- Sync dependencies: `uv sync`
-
-### Running Python Code
-
-- Run a Python script with `uv run <script-name>.py`
-- Run Python tools like Pytest with `uv run pytest` or `uv run ruff`
-- Launch a Python repl with `uv run python`
-
-### Managing Scripts with PEP 723 Inline Metadata
-
-- Run a Python script with inline metadata (dependencies defined at the top of the file) with: `uv run script.py`
-- You can add or remove dependencies manually from the `dependencies =` section at the top of the script, or
-- Or using uv CLI:
-    - `uv add package-name --script script.py`
-    - `uv remove package-name --script script.py`
-
-## File Edit Conflicts
-
-When you get a "File has been modified since read" error (common when multiple agents edit the same file concurrently), retry with exponential backoff:
-
-1.⁠ ⁠*Immediately* re-read the file and retry the edit
-2.⁠ ⁠*After 10 seconds* – ⁠ sleep 10 ⁠, re-read, retry
-3.⁠ ⁠*After 30 seconds* – ⁠ sleep 30 ⁠, re-read, retry
-4.⁠ ⁠*After 60 seconds* – ⁠ sleep 60 ⁠, re-read, retry
-
-Only give up after all 4 attempts fail. Each retry MUST re-read the file to obtain the latest content, then apply the edit to the file's current state.
-
+- **Package Management**: Use `uv` exclusively for dependencies (sync, lock, install). Never use pip, poetry, or conda.
+- **Linting/Formatting**: Implement `pre-commit` using `Ruff` as the single source of truth. Keep hooks fast and actionable.
