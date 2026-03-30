@@ -1,0 +1,19 @@
+# BAGPIPES SED Fitting - Python Requirements
+# Install with: pip install -r requirements.txt
+
+# Core dependency
+bagpipes>=1.3.5          # Bayesian SED fitting code
+
+# Scientific computing
+numpy>=1.20              # Array operations
+matplotlib>=3.5          # Plotting
+astropy>=5.0             # FITS I/O and table handling
+scipy>=1.7               # Scientific functions (dependency of bagpipes)
+
+# Sampler (auto-installed with bagpipes, but listed for clarity)
+nautilus-sampler>=0.9    # Nested sampling
+
+# Optional but recommended
+jupyter>=1.0             # Jupyter notebook support
+jupytext>=1.14           # Convert between .py and .ipynb
+tqdm>=4.60               # Progress bars

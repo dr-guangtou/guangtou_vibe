@@ -1,0 +1,17 @@
+# SPHEREx IRSA Data Access - Python Requirements
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+astroquery>=0.4.7      # IRSA SIA queries
+pyvo>=1.5              # TAP protocol for SPHEREx queries
+astropy>=5.0           # FITS I/O and WCS handling
+numpy>=1.21            # Array operations
+matplotlib>=3.5        # Plotting
+
+# Optional dependencies
+firefly-client>=2      # Interactive visualization with IRSA viewer
+packaging>=21.0        # Version parsing for PSF header fix
+
+# Development dependencies (optional)
+jupytext>=1.14         # Convert between .py and .ipynb
+jupyter>=1.0           # Jupyter notebook support
