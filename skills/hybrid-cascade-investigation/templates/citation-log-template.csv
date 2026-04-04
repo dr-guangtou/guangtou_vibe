@@ -1,0 +1,3 @@
+citation,authors,year,journal,status,link,link_type,verification_notes,agent_source
+"{{EXAMPLE_PAPER}}","Author A; Author B",2024,"MNRAS",✅ Verified,"https://arxiv.org/abs/2401.00001",arXiv,"Full text extracted; claims validated",Phase 1 Agent 1
+"{{EXAMPLE_PAPER_2}}","Author C et al.",2023,"ApJ",⚠️ Abstract only,"https://doi.org/10.3847/0004-637X/123/4/123",DOI,"Paywall restricted; abstract matches summary",Phase 2 Agent 1
