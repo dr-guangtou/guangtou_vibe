@@ -1,17 +1,14 @@
-# SPHEREx IRSA Data Access - Python Requirements
-# Install with: pip install -r requirements.txt
+# SPHEREx IRSA Data Access - Python requirements (verified 2026-09-22)
+# Install with: uv add <packages> (preferred) or pip install -r requirements.txt
 
-# Core dependencies
-astroquery>=0.4.7      # IRSA SIA queries
-pyvo>=1.5              # TAP protocol for SPHEREx queries
-astropy>=5.0           # FITS I/O and WCS handling
-numpy>=1.21            # Array operations
-matplotlib>=3.5        # Plotting
+astroquery>=0.4.11     # IRSA SIA2 queries (collections spherex_qr2/qr3[_deep])
+pyvo>=1.9              # TAP queries against spherex.plane/artifact/observation
+astropy>=7.0           # FITS I/O, WCS (WAVE-TAB), units
+numpy>=2.0
+photutils>=2.0         # ImagePSF for ePSF stamps; aperture photometry
+matplotlib>=3.8
 
-# Optional dependencies
-firefly-client>=2      # Interactive visualization with IRSA viewer
-packaging>=21.0        # Version parsing for PSF header fix
-
-# Development dependencies (optional)
-jupytext>=1.14         # Convert between .py and .ipynb
-jupyter>=1.0           # Jupyter notebook support
+# Optional
+fsspec[s3]             # fits.open('s3://nasa-irsa-spherex/...', fsspec_kwargs={'anon': True})
+firefly-client>=2      # IRSA viewer
+packaging>=21.0        # version parsing for the legacy QR2 PSF header fix

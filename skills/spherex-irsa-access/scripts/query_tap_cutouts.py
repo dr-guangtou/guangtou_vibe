@@ -14,7 +14,7 @@ import argparse
 import sys
 
 
-def query_spherex_tap(ra, dec, size_deg=0.1, bandpass='SPHEREx-D2'):
+def query_spherex_tap(ra, dec, size_deg=0.1, bandpass='SPHEREx-D2', collection=None):
     """
     Query SPHEREx cutouts using TAP protocol.
     
@@ -49,16 +49,22 @@ def query_spherex_tap(ra, dec, size_deg=0.1, bandpass='SPHEREx-D2'):
     
     print(f"Querying TAP for cutouts at RA={ra}, Dec={dec}, size={size_deg}deg, band={bandpass}...")
     
+    # Optional release filter, e.g. 'spherex_qr2', 'spherex_qr3', 'spherex_qr3_deep'
+    collection_clause = f"\n            AND o.collection = '{collection}'" if collection else ''
+
     # Build TAP query
     query = f"""
     SELECT
         'https://irsa.ipac.caltech.edu/' || a.uri || '?center={ra},{dec}d&size={size_deg}' AS uri,
         p.time_bounds_lower,
-        p.energy_bandpassname
+        p.energy_bandpassname,
+        p.provenance_version,
+        o.collection
     FROM spherex.artifact a
     JOIN spherex.plane p ON a.planeid = p.planeid
+    JOIN spherex.observation o ON o.obsid = p.obsid
     WHERE 1 = CONTAINS(POINT('ICRS', {ra}, {dec}), p.poly)
-            AND p.energy_bandpassname = '{bandpass}'
+            AND p.energy_bandpassname = '{bandpass}'{collection_clause}
     ORDER BY p.time_bounds_lower
     """
     
@@ -88,18 +94,17 @@ def main():
     parser.add_argument('dec', type=float, help='Declination (degrees)')
     parser.add_argument('--size', type=float, default=0.1,
                        help='Cutout size in degrees (default: 0.1)')
+    parser.add_argument('--collection', type=str, default=None,
+                       help='Release collection, e.g. spherex_qr2, spherex_qr3, spherex_qr3_deep (default: all)')
     parser.add_argument('--bandpass', type=str, default='SPHEREx-D2',
                        choices=[f'SPHEREx-D{i}' for i in range(1, 7)],
                        help='SPHEREx detector band (default: SPHEREx-D2)')
     
     args = parser.parse_args()
     
-    results = query_spherex_tap(
-        args.ra,
-        args.dec,
+    results = query_spherex_tap(args.ra, args.dec,
         size_deg=args.size,
-        bandpass=args.bandpass
-    )
+        bandpass=args.bandpass, collection=args.collection)
     
     # Save results
     if len(results) > 0:

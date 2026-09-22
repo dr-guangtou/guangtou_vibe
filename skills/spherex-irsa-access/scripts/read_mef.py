@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Read and inspect SPHEREx Multi-Extension FITS (MEF) files.
+Read and inspect SPHEREx Multi-Extension FITS (MEF) files (QR2 PSF cube or QR3 EPSF table).
 
 Usage:
     python read_mef.py <fits_file_or_url>
@@ -91,7 +91,7 @@ def read_spherex_mef(file_path, verbose=True):
         
         if 'PSF' in hdulist:
             print("\n" + "="*60)
-            print("PSF EXTENSION")
+            print("PSF EXTENSION (QR2, VERSION 6.x: 121-plane cube, 10x oversampled)")
             print("="*60)
             psf_hdr = hdulist['PSF'].header
             psf_data = hdulist['PSF'].data
@@ -99,6 +99,30 @@ def read_spherex_mef(file_path, verbose=True):
             for key in ['EXTNAME', 'OVERSAMP', 'NAXIS1', 'NAXIS2', 'NAXIS3']:
                 if key in psf_hdr:
                     print(f"  {key}: {psf_hdr[key]}")
+            version = str(primary.get('VERSION', ''))
+            if 'psffix1' not in version and version and version < '6.5.6':
+                print("  WARNING: pre-6.5.6 file without +psffix1: PSF plane order bug; "
+                      "prefer the qr3/epsf calibration files (see select_epsf.py)")
+
+        if 'EPSF' in hdulist:
+            print("\n" + "="*60)
+            print("EPSF EXTENSION (QR3/DR1, VERSION 7.x: binary table, one row per zone)")
+            print("="*60)
+            epsf_hdu = hdulist['EPSF']
+            print(f"  Rows (zones): {epsf_hdu.header['NAXIS2']}")
+            print(f"  Columns: {epsf_hdu.columns.names}")
+            for key in ['OVSMPX', 'OVSMPY', 'TDIM11', 'ORDERING', 'DETCOORD']:
+                if key in epsf_hdu.header:
+                    print(f"  {key}: {epsf_hdu.header[key]}")
+
+        if 'FLAGS' in hdulist:
+            flags_hdr = hdulist['FLAGS'].header
+            names_qr2 = {k[3:]: flags_hdr[k] for k in flags_hdr if k.startswith('MP_')}
+            names_qr3 = {flags_hdr[k]: flags_hdr['MSKM' + k[4:]] for k in flags_hdr if k.startswith('MSKN')}
+            print("\n" + "="*60)
+            print("FLAGS EXTENSION (names from header; canonical table in references/spherex_flags.py)")
+            print("="*60)
+            print(f"  QR2-style MP_* names: {len(names_qr2)}; QR3-style MSKN names: {len(names_qr3)}")
     
     return hdulist
 
