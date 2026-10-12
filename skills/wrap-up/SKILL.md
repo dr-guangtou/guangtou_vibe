@@ -27,14 +27,13 @@ If there are uncommitted changes: `git add -u` plus untracked files created this
 
 ## 4. Merge
 
+Run as one `&&` chain in a single shell call so any failure stops the rest (drop the `git pull` step if `no-push` or no remote):
+
 ```bash
-git checkout <default_branch>
-git pull --ff-only          # skip if no-push or no remote
-git merge --no-ff <branch>
-git branch -d <branch>
+git checkout <default_branch> && git pull --ff-only && git merge --no-ff <branch> && git branch -d <branch>
 ```
 
-On a pull or merge failure or conflict: stop, leave the repo as is, and report. Never force, reset, or delete with `-D`.
+On a pull or merge failure or conflict: stop, leave the repo as is, and report. A transient `fatal: stash failed` on pull (Dropbox file locks) may be retried once. Never force, reset, or delete with `-D`.
 
 ## 5. Push
 
