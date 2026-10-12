@@ -1,63 +1,78 @@
 ---
 name: handover
-description: Create a clean context handover package for software projects. Use when the user asks for session handoff, context preservation, or types "$handover" (or asks for "/handover") near context limits. Produce a detailed summary file, a next-session starter prompt, and an optional Obsidian-ready development snapshot.
+description: Save session context to a handover note, record a one-sentence snapshot to Obsidian, and print a starter prompt for the next session. Use when the user types "/handover" or "$handover", or asks for a session handoff near context limits.
+argument-hint: "[optional notes about current work] [--no-record]"
+allowed-tools: Read, Write, Edit, Bash(bash:*), Bash(obsidian:*)
 ---
 
 # Handover
 
-Create a structured handover that preserves technical context with minimal information loss.
+Capture everything the next session needs, with zero information loss. The conversation is the main source; the repo state below is already collected, so do not re-run git commands.
 
-## Run This Workflow
+User notes: $ARGUMENTS
 
-1. Gather current state.
-   - Capture current goal, recent request, completed work, in-flight work, blockers, and key decisions.
-   - Run `git status --short --branch` and `git log --oneline -5`.
-   - If there are uncommitted changes, run `git diff --stat`.
-   - If `docs/todo.md` exists, extract current TODO and completed items.
-   - Best-effort session ID lookup for Claude compatibility: `ls -t ~/.claude/session-env/ | head -1`.
+## Repo state
 
-2. Write the handover summary file.
-   - Path pattern: `docs/journal/YYYY-MM-DD_handover.md`.
-   - If the file exists, append numeric suffixes: `_2`, `_3`, and so on.
-       - Use `skills/handover/references/handover-template.md` as the canonical structure.
-   
-   - Include concrete file paths, commands, and verification status.
+!`bash "${CLAUDE_SKILL_DIR}/../one-sentence/scripts/evidence.sh"`
 
-3. Update project memory (if available).
-   - If a project memory file exists (for example under `~/.claude/projects/*/memory/MEMORY.md`), update only the concise current-state section.
-   - Keep the memory file short and high-signal; avoid duplicating full handover notes.
+If the line above was not expanded (non-Claude agents), run once:
+`bash <skills dir>/one-sentence/scripts/evidence.sh`
 
-4. Generate a one-sentence development snapshot.
-   - Follow the same rules as the `one-sentence` skill.
-   - Output format: `[YYYY-MM-DD] <repo-name>: <summary>`.
-   - Keep to 1 sentence by default; use 2 only when a key remaining blocker must be included.
+Session ID: ${CLAUDE_SESSION_ID}
 
-5. Optionally record the snapshot in Obsidian.
-   - Only auto-append when the user requested recording or provided an equivalent flag.
-   - Command:
-     - `obsidian vault=wensai daily:append content="## Dev Snapshot\n\n> [YYYY-MM-DD] <repo>: <summary>"`
-   - If recording was not requested, provide the command and ask the user whether to run it.
+## 1. Write the handover note
 
-6. Prepare a next-session starter prompt.
-   - At the end of the response, provide a ready-to-paste prompt in a fenced code block.
-   - It must include:
-     - `Read docs/journal/YYYY-MM-DD_handover.md for full context.`
-     - Immediate next step in 1-2 sentences.
-     - Any warnings, constraints, or verification gaps.
+Path: `docs/journal/<date>_handover.md`; if it exists, use `_2`, `_3`, ... Use explicit paths and commands, distinguish facts from assumptions, and mark anything unchecked as `not yet verified`.
 
-7. Confirm completion.
-   - List created or updated files.
-   - Include the handover summary file path and the generated starter prompt.
+```markdown
+# Session Handover - YYYY-MM-DD
 
-## Output Quality Rules
+## Goal
+- Current objective / most recent request
 
-- Use explicit paths and commands.
-- Distinguish facts from assumptions.
-- Do not invent results; mark unknowns as `not yet verified`.
-- Keep wording concise and operational.
+## Completed This Session
+- Specific accomplishments with file paths and commit IDs
 
-## Minimal Adaptation Guidance
+## In Progress (Not Finished)
+- Remaining work and immediate next actions
 
-- If the repository has an existing handover convention, follow it.
-- Cross-reference `docs/todo.md` and `docs/SPEC.md` when they exist.
-- If no implementation changed, still capture decisions and pending actions.
+## Problems / Blockers
+- Unresolved issues
+
+## Key Decisions
+- Decision, rationale, and approaches tried and rejected
+
+## Branch State
+- Branch / uncommitted changes / relationship to main
+
+## Files Modified This Session
+- `path/to/file`
+
+## Verification
+- Ran / result / not run yet and why
+
+## Snapshot
+- `[YYYY-MM-DD] <repo>: <one-sentence summary>`
+
+---
+*Session: <SESSION_ID> - resume with `claude --resume <SESSION_ID>`*
+```
+
+## 2. Update project memory (only if it exists)
+
+If the evidence shows a "Project memory" section, update only its Current State section: branch, what is done, what is next, critical warnings. Do not duplicate the handover note.
+
+## 3. Snapshot
+
+Write the `## Snapshot` line yourself (do not invoke `/one-sentence`): 1 sentence (2 only if a key blocker must be included), past tense, concrete components, no meta-work. Unless `--no-record` was given, run once:
+
+```bash
+obsidian vault=wensai daily:append content="## Dev Snapshot\n\n> [<date>] <repo>: <summary>"
+```
+
+## 4. Finish
+
+Reply briefly with: files created/updated, the snapshot line and whether it was recorded, and a ready-to-paste starter prompt in a fenced code block containing:
+- `Read docs/journal/<file>.md for full context.`
+- The immediate next step in 1-2 sentences.
+- Warnings, constraints, or verification gaps.
