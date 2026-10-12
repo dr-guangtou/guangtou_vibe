@@ -1,58 +1,39 @@
 ---
 name: one-sentence
-description: Summarize current development progress in 1-2 precise sentences using recent commits, working tree state, and recent session notes; optionally append the summary to today's Obsidian daily note.
+description: Summarize current development progress in 1-2 precise sentences and append it to today's Obsidian daily note. Use when the user types "/one-sentence" or "$one-sentence".
+argument-hint: "[HEAD~5..HEAD | today | week | month | topic] [--no-record]"
+model: haiku
+context: fork
+allowed-tools: Bash(bash:*), Bash(obsidian:*)
 ---
 
 # One-Sentence
 
-Generate a precise, evidence-backed 1-2 sentence summary of recent development progress.
+Cheap, single-pass task. Do not explore the repo or read extra files; the evidence below is enough.
 
-## Argument Handling
+Arguments: $ARGUMENTS
 
-Accept optional arguments after `$one-sentence`:
+## Evidence
 
-- No argument or `session`: summarize recent session context.
-- Git range (for example `HEAD~5..HEAD`): summarize commits in that range only.
-- Time keyword (`today`, `week`, `month`): use `git log --since` for matching period.
-- Free-text topic: focus summary on that topic while using the same evidence sources.
-- `--record`: append the final summary to today's Obsidian daily note automatically.
+!`bash "${CLAUDE_SKILL_DIR}/scripts/evidence.sh" $ARGUMENTS`
 
-Arguments can be combined, for example: `HEAD~10..HEAD --record`.
+If the line above was not expanded into evidence (non-Claude agents), run once:
+`bash <this skill dir>/scripts/evidence.sh [git-range | today | week | month]`
 
-## Run This Workflow
+## Write the summary
 
-1. Collect evidence.
-   - Git commits:
-     - Session/no args: `git log --oneline -20`
-     - Range: `git log --oneline <range>`
-     - Time: `git log --oneline --since="<period>"`
-   - Working tree: `git diff --stat HEAD`
-   - Recent repo journal notes (if present): `ls -t docs/journal/*.md 2>/dev/null | head -3`
-   - Read most recent journal note when available.
-   - Optional memory signal (Claude-compatible projects): check `~/.claude/projects/*/memory/MEMORY.md` and extract current-state section when relevant.
-   - Optional task signal: if `docs/todo.md` exists, collect completed items.
+- Exactly 1-2 sentences, past tense. Prefer one; use two only for a key accomplishment plus a key remaining blocker.
+- Name concrete features, files, or components. "Made progress on X" is banned.
+- Stay within the requested range/time/topic; do not inflate scope or invent facts. If a git range or time keyword was given, summarize only those commits and ignore the Uncommitted section.
+- Omit meta-work (handover notes, memory updates, prompt tweaks) unless it was the main work.
+- Format: `[<date>] <repo>: <summary>` using `date` and `repo` from the evidence.
 
-2. Write the summary.
-   - Produce exactly 1-2 sentences.
-   - Use specific components/files rather than vague outcomes.
-   - Use past tense.
-   - Prefer one sentence; use two only when a key accomplishment and key remaining blocker both matter.
-   - Omit meta-work unless meta-work was the primary activity.
+## Record
 
-3. Print output in exact format.
-   - `[YYYY-MM-DD] <repo-name>: <summary>`
-   - Date source: `date +%Y-%m-%d`
-   - Repo name: `basename $(git rev-parse --show-toplevel)`
-   - If not in a git repo, use current directory basename.
+Unless arguments contain `--no-record`, run exactly one command:
 
-4. Record conditionally.
-   - If `--record` is present, run:
-     - `obsidian vault=wensai daily:append content="## Dev Snapshot\n\n> [YYYY-MM-DD] <repo>: <summary>"`
-   - Confirm with: `Recorded to today's Obsidian journal.`
-   - If `--record` is absent, ask whether to append instead of auto-writing.
+```bash
+obsidian vault=wensai daily:append content="## Dev Snapshot\n\n> [<date>] <repo>: <summary>"
+```
 
-## Output Quality Rules
-
-- Do not invent facts.
-- Keep scope faithful to the provided range/time/topic.
-- Keep summary high-signal and compact.
+Reply with only the summary line, then `Recorded to today's Obsidian journal.` (or `Not recorded: <error>` if the command failed).

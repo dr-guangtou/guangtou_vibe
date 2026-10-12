@@ -1,0 +1,4 @@
+interface:
+  display_name: "Wrap Up"
+  short_description: "Journal + snapshot, commit, merge to main, push"
+  default_prompt: "Use $wrap-up [no-push] [commit message] to journal the session, commit, merge into the default branch, and push."
