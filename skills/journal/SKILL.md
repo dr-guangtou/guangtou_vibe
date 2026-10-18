@@ -2,7 +2,7 @@
 name: journal
 description: Write a concise development journal entry for the current session into the wensai Obsidian vault (Progress, Current State, Lessons Learned) and append a one-sentence snapshot to today's Obsidian daily note. Use when the user types "/journal" or "$journal", or asks for a dev journal, checkpoint, or retrospective note.
 argument-hint: "[optional focus, tone, or scope instructions] [--no-record]"
-allowed-tools: Write, Bash(bash:*), Bash(mkdir:*), Bash(obsidian:*)
+allowed-tools: Write, Bash(bash:*), Bash(mkdir:*)
 ---
 
 # Journal
@@ -61,8 +61,10 @@ tags:
 Write `[<date>] <repo>: <summary>`: 1 sentence (2 only if a key blocker must be included), past tense, concrete components, no meta-work, no invented facts. Unless `--no-record` was given, run once:
 
 ```bash
-obsidian vault=wensai daily:append content="## Dev Snapshot\n\n> [<date>] <repo>: <summary>"
+bash "${CLAUDE_SKILL_DIR}/../one-sentence/scripts/append_snapshot.sh" "[<date>] <repo>: <summary>"
 ```
+
+It appends the line under the existing `## Dev Snapshot` heading of today's daily note (adding the heading once if missing) by writing the note file directly; it does not use the Obsidian CLI, which can hang. Non-Claude agents: run `<skills dir>/one-sentence/scripts/append_snapshot.sh`.
 
 ## Finish
 
