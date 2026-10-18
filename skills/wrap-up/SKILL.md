@@ -3,7 +3,7 @@ name: wrap-up
 description: Finish a feature branch in one go - write the dev journal plus one-sentence Obsidian snapshot, commit remaining work, merge into main/master with --no-ff, delete the branch, and push. Use only when the user types "/wrap-up" or "$wrap-up".
 argument-hint: "[no-push] [commit message]"
 disable-model-invocation: true
-allowed-tools: Write, Skill, Bash(bash:*), Bash(mkdir:*), Bash(obsidian:*), Bash(git:*)
+allowed-tools: Write, Skill, Bash(bash:*), Bash(mkdir:*), Bash(git:*)
 ---
 
 # Wrap Up

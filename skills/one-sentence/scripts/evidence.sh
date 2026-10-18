@@ -48,10 +48,12 @@ if [ -f "$memory_file" ]; then
   awk '/^## .*[Cc]urrent [Ss]tate/{p=1;print;next} /^## /{p=0} p' "$memory_file" | head -30
 fi
 
-# ponytail: vault path hard-coded; `obsidian vault info` can hang when the app is closed.
-vault_dir="$HOME/work/wensai"
+# Vault path is fixed (override with WENSAI_VAULT); `obsidian vault info` can hang when the app is closed.
+vault_dir="${WENSAI_VAULT:-$HOME/work/wensai/wensai}"
 if [ -d "$vault_dir/.obsidian" ]; then
-  journal_base="$vault_dir/development/$repo/${repo}_${branch//\//-}_${today}"
+  # development/repo.yaml maps a repository to its journal folder ("must_specsim: specsim").
+  folder=$(awk -v repo="$repo" -F': *' '$1 == repo { print $2; exit }' "$vault_dir/development/repo.yaml" 2>/dev/null)
+  journal_base="$vault_dir/development/${folder:-$repo}/${repo}_${branch//\//-}_${today}"
   journal_path="$journal_base.md"
   suffix=2
   while [ -e "$journal_path" ]; do journal_path="${journal_base}_$suffix.md"; suffix=$((suffix + 1)); done

@@ -4,7 +4,7 @@ description: Summarize current development progress in 1-2 precise sentences and
 argument-hint: "[HEAD~5..HEAD | today | week | month | topic] [--no-record]"
 model: haiku
 context: fork
-allowed-tools: Bash(bash:*), Bash(obsidian:*)
+allowed-tools: Bash(bash:*)
 ---
 
 # One-Sentence
@@ -33,7 +33,9 @@ If the line above was not expanded into evidence (non-Claude agents), run once:
 Unless arguments contain `--no-record`, run exactly one command:
 
 ```bash
-obsidian vault=wensai daily:append content="## Dev Snapshot\n\n> [<date>] <repo>: <summary>"
+bash "${CLAUDE_SKILL_DIR}/scripts/append_snapshot.sh" "[<date>] <repo>: <summary>"
 ```
+
+It appends the line under the existing `## Dev Snapshot` heading of today's daily note (adding the heading once if missing) by writing the note file directly. It never creates the daily note: if today's note does not exist, it records nothing and exits with an error, so report `Not recorded` and tell the user to open today's note in Obsidian and rerun. it does not use the Obsidian CLI, which can hang. Non-Claude agents: run `<skills dir>/one-sentence/scripts/append_snapshot.sh`.
 
 Reply with only the summary line, then `Recorded to today's Obsidian journal.` (or `Not recorded: <error>` if the command failed).

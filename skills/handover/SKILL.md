@@ -2,7 +2,7 @@
 name: handover
 description: Save session context to a handover note, record a one-sentence snapshot to Obsidian, and print a starter prompt for the next session. Use when the user types "/handover" or "$handover", or asks for a session handoff near context limits.
 argument-hint: "[optional notes about current work] [--no-record]"
-allowed-tools: Read, Write, Edit, Bash(bash:*), Bash(obsidian:*)
+allowed-tools: Read, Write, Edit, Bash(bash:*)
 ---
 
 # Handover
@@ -67,8 +67,10 @@ If the evidence shows a "Project memory" section, update only its Current State 
 Write the `## Snapshot` line yourself (do not invoke `/one-sentence`): 1 sentence (2 only if a key blocker must be included), past tense, concrete components, no meta-work. Unless `--no-record` was given, run once:
 
 ```bash
-obsidian vault=wensai daily:append content="## Dev Snapshot\n\n> [<date>] <repo>: <summary>"
+bash "${CLAUDE_SKILL_DIR}/../one-sentence/scripts/append_snapshot.sh" "[<date>] <repo>: <summary>"
 ```
+
+It appends the line under the existing `## Dev Snapshot` heading of today's daily note (adding the heading once if missing) by writing the note file directly. It never creates the daily note: if today's note does not exist, it records nothing and exits with an error, so report `Not recorded` and tell the user to open today's note in Obsidian and rerun. it does not use the Obsidian CLI, which can hang. Non-Claude agents: run `<skills dir>/one-sentence/scripts/append_snapshot.sh`.
 
 ## 4. Finish
 
