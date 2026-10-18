@@ -2,6 +2,7 @@
 # Append one snapshot line under "## Dev Snapshot" in today's wensai daily note.
 # Writes the Markdown file directly: the Obsidian CLI can hang when the app is closed,
 # and `daily:append` adds a duplicate heading on every call.
+# Never creates the daily note; exits 1 if it is missing.
 # Usage: append_snapshot.sh "[<date>] <repo>: <summary>"
 set -eu
 line="$1"
@@ -9,11 +10,10 @@ vault_dir="${WENSAI_VAULT:-$HOME/work/wensai/wensai}"
 [ -d "$vault_dir/.obsidian" ] || { echo "Not recorded: no vault at $vault_dir" >&2; exit 1; }
 today=$(date +%Y-%m-%d)
 note="$vault_dir/journal/$(date +%Y)/$(date +%m)/$today.md"
-mkdir -p "$(dirname "$note")"
+# Never create the daily note: Obsidian builds it from the user's template.
+[ -f "$note" ] || { echo "Not recorded: today's daily note does not exist yet ($note); open it in Obsidian first" >&2; exit 1; }
 heading="## Dev Snapshot"
-if [ ! -f "$note" ]; then
-  printf '%s\n\n> %s\n' "$heading" "$line" > "$note"
-elif ! grep -qx "$heading" "$note"; then
+if ! grep -qx "$heading" "$note"; then
   printf '\n%s\n\n> %s\n' "$heading" "$line" >> "$note"
 else
   # Insert after the last line of the existing section, before the next heading of level 1-2.
