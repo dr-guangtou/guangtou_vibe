@@ -1,0 +1,51 @@
+:root {
+  color-scheme: light dark;
+}
+
+:root:has(body[data-theme="dark"]) {
+  color-scheme: dark;
+}
+
+:root:has(body[data-theme="light"]) {
+  color-scheme: light;
+}
+
+article {
+  line-height: 1.75;
+  min-inline-size: 0;
+}
+
+article :is(p, li, dd, blockquote) {
+  overflow-wrap: anywhere;
+}
+
+article > :is(p, ul, ol, dl, blockquote) {
+  max-inline-size: 68ch;
+}
+
+article h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+article h2 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-block-start: 2rem;
+}
+
+article h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+article a {
+  text-underline-offset: 0.16em;
+}
+
+@media print {
+  :root:has(body[data-theme]) {
+    color-scheme: light;
+  }
+}

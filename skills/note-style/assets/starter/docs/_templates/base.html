@@ -1,0 +1,16 @@
+{% extends "!base.html" %}
+
+{% block body %}
+<script>
+  let initial_theme = "dark";
+  try {
+    const saved_theme = localStorage.getItem("theme");
+    if (["light", "dark", "auto"].includes(saved_theme)) {
+      initial_theme = saved_theme;
+    }
+  } catch {}
+  document.body.dataset.theme = initial_theme;
+  document.querySelector('meta[name="color-scheme"]').content =
+    initial_theme === "auto" ? "light dark" : initial_theme;
+</script>
+{% endblock %}

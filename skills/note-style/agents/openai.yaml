@@ -1,0 +1,3 @@
+interface:
+  display_name: "note-style"
+  short_description: "Scientific Markdown documentation with customized Furo"

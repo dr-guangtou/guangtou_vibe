@@ -1,0 +1,18 @@
+[project]
+name = "note_style_starter"
+version = "0.1.0"
+description = "Reusable Sphinx and Furo starter for scientific notes"
+requires-python = ">=3.11"
+dependencies = ["furo", "myst-parser", "sphinx"]
+
+[dependency-groups]
+dev = ["pre-commit", "ruff"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
